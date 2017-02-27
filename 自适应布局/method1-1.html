@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>float1</title>
+	<style>
+/**********圣杯模型***********/        
+        body {margin: 0; padding: 0;}
+        .wrap {background-color: #d66464;}
+        .clearfix:after {
+        	content: "";
+        	clear: both;
+        	display: block;
+        }
+        .left {
+        	float: left;
+        	width: 100px;
+        	background-color: #00f;
+        	height: 180px;
+        }
+        .right {
+        	float: right;
+        	width: 150px;
+        	background-color: #0f0;
+        	height: 200px;
+        }
+        .center {
+        	background-color: #fff;
+        	margin-left: 110px;
+        	margin-right: 160px;
+        	height: 150px;
+        }
+	</style>
+</head>
+<body>
+	<div class="wrap clearfix">
+		<div class="left">left,宽度固定，高度可固定也可以有内容撑开。</div>
+		<div class="right">right，宽度固定，高度可固定也可以有内容撑开。</div>
+		<div class="center">center，可以自适应浏览器宽度，高度可固定也可以有内容撑开。</div>
+	</div>
+</body>
+</html>

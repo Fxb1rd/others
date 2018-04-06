@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>轮播</title>
+    <style type="text/css">
+        * {padding: 0; margin: 0;}
+        .container {
+            width: 171px;
+            height: 96px;
+            position: relative;
+        }
+        .display {
+            width: 171px;
+            height: 96px;
+            overflow: hidden;
+            position: relative;
+        }
+        .display img {
+            width: 171px;
+            height: 96px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        .buttons{
+            position: absolute;
+            bottom: 0px;
+            left: 65px;
+        }
+        .buttons button {
+            width: 5px;
+            height: 5px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            background-color: white;
+        }
+        button:first-child {background-color: black;}
+        </style>
+        <script src="js/jquery-3.2.1.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="display">
+                <img src="img/1.jpg" style="display: block;" alt="1" />
+                <img src="img/2.jpg" alt="2" />
+                <img src="img/3.jpg" alt="3" />
+                <img src="img/4.jpg" alt="4" />
+            </div>
+            <div class="buttons">
+                <button autofocus="autofocus"></button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>
+    </body>
+    <script>
+    //充分利用了jquery的强大的选择器功能，将不需要显示的图片隐藏起来，循环调用，达到轮播效果。
+    var i = 0;
+    var imgs = $(".display img");
+    var buttons = $(".buttons button");
+    var Width = imgs.width();
+    var timer;
+    (function() {//循环绑定
+    	for (var j = 0; j< 4; j++) {
+            (function(j) {//闭包，动态保留j。
+           	    buttons.eq(j).on("click",function() {
+                   $(this).css("background-color","#000");
+                   $(this).siblings().css("background-color","white");//siblings()筛选同级元素
+                   imgs.eq(j).css("left","0").fadeIn(800);//淡入淡出切换
+                   imgs.eq(j).siblings().fadeOut(800);
+                   i = j;//将i传出，无缝连接
+                });
+           	})(j);
+        };
+    })();
+    function autoturn() {
+        imgs.eq(i).show().animate({left:-Width},200);
+        //第一张图片从显示，然后向右移消失。下一张图片在右侧，向左移出
+        i++;
+        if (i == imgs.length) {i = 0};//循环
+        imgs.eq(i).css("left",Width).show().animate({left:'0px'},200);
+        buttons.eq(i).css("background-color","black");
+        buttons.eq(i).siblings().css("background-color","white");
+    };
+    var play = function () {//延时器
+        timer = setInterval(autoturn, 2000);
+    };
+    var stop = function () {
+        clearInterval(timer);
+    };
+    $(".container").mouseenter(stop);
+    $(".container").mouseleave(play);
+    play();
+    </script>
+</html>

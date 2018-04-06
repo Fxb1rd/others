@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>轮播</title>
+    <style type="text/css">
+        * {padding: 0; margin: 0;}
+        #container {
+            width: 171px;
+            height: 96px;
+            position: relative;
+        }
+        .display {
+            width: 171px;
+            height: 96px;
+            overflow: hidden;
+            position: relative;
+        }
+        .display img {
+            width: 171px;
+            height: 96px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            z-index: 1;
+    -webkit-transition-duration: 200ms; /* Safari 和 Chrome */
+    -webkit-transition-timing-function: linear; /* Safari 和 Chrome */
+
+        }
+        .buttons{
+            position: absolute;
+            bottom: 0px;
+            left: 65px;
+            z-index: 20;
+        }
+        .buttons button {
+            width: 5px;
+            height: 5px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            background-color: white;
+        }
+        button:first-child {background-color: black;}
+        @-webkit-keyframes move1 /* Safari and Chrome */
+        {/* 通过z轴控制隐藏，达到循环 */
+        0% {z-index: 10; left: 0;}
+        50% {z-index:10; left: -171px;}
+        100% {z-index:0; left: -171px;}
+        }
+        @-webkit-keyframes move2 /* Safari and Chrome */
+        {
+        0% {z-index: 0; left: 171px;}
+        0% {z-index: 10; left: 171px;}
+        50% {z-index: 10; left: 0;}
+        100% {z-index: 10; left: 0;}
+        }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="display">
+                <img src="img/1.jpg" style="display: block;" alt="1" />
+                <img src="img/2.jpg" alt="2" />
+                <img src="img/3.jpg" alt="3" />
+                <img src="img/4.jpg" alt="4" />
+            </div>
+            <div class="buttons">
+                <button autofocus="autofocus"></button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>
+
+    </body>
+    <script>
+    var i = 0;
+    var container = document.getElementById("container");
+    var imgs = document.getElementsByTagName("img");
+    var buttons = document.getElementsByTagName("button");
+    var Width = "171px";
+    var timer;
+    (function() {//循环绑定
+        for (var j = 0; j< 4; j++) {
+            (function(j) {//闭包，动态保留j。
+                buttons[j].onclick = function() {
+                    this.style.backgroundColor = "#000";
+                    this.siblings(function() {
+                        this.style.backgroundColor = "#fff";
+                    });//siblings()筛选同级元素
+                    imgs[j].style.left = "0";
+                    imgs[j].style.display = "block";
+                    imgs[j].siblings(function() {
+                        this.style.display = "none";
+                    });
+                    i = j;////传出i;
+                };
+            })(j);
+        };
+    })();
+    function autoturn() {
+        //递归函数做动画效果////////////
+
+        console.log(i);
+        imgs[i].style.display = "block";
+        imgs[i].style.left = 0;
+        imgs[i].style.webkitAnimation = "move1 1000ms forwards";
+
+
+        //第一张图片从显示，然后向右移消失。下一张图片在右侧，向左移出
+        i++;
+        if (i == imgs.length) {i = 0};//循环
+        imgs[i].style.display = "block";
+        imgs[i].style.left = "171px";
+        imgs[i].style.webkitAnimation = "move2 1000ms forwards";
+
+
+        buttons[i].style.backgroundColor = "black";
+        buttons[i].siblings( function() {
+            this.style.backgroundColor = "white";
+        });
+
+}
+    var play = function () {//延时器
+        timer = setInterval(autoturn, 1000);
+    };
+    var stop = function () {
+        clearInterval(timer);
+    };
+    container.onmouseover = stop;
+    container.onmouseout = play;
+    play();
+
+    ////////////////////////构造siblings函数
+    Element.prototype.siblings = function(callback){
+    var siblingElement = [];
+    var parentAllElement = [];
+    if( ! this.parentNode ){
+        return siblingElement;
+    };
+    parentAllElement = this.parentNode.getElementsByTagName(this.tagName);
+    for( var i = 0; i < parentAllElement.length ; i++ ){
+        if( parentAllElement[i] != this ){
+            siblingElement.push(parentAllElement[i]);
+            typeof callback == "function" && callback.call(parentAllElement[i]);
+        }
+    }
+    return siblingElement;
+    };
+    </script>
+</html>

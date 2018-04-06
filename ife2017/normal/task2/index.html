@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>右键菜单</title>
+<style type="text/css">
+ * {padding: 0; margin: 0;}
+ #container {
+    width: 400px;/*增加一个magin值会使菜单不在鼠标指针位置显示？？？*/
+    height: 400px;
+    position: relative;
+    background-color: #A7A5A5;
+ }
+ #menu {
+     height: 120px;
+     width: 50px;
+     border: 1px solid gray;
+     background-color: #fff;
+     display: none;
+     position: absolute;
+ }
+ ul,li {
+     margin: 0;
+     padding: 0;
+     text-align: center;
+     list-style-type: none;
+     line-height: 40px;
+ }
+ li:hover {
+     background-color: #01DEFF;
+     cursor: default;
+ }
+ </style>
+ </head>
+ <body>
+ <div id="container">
+ <div id="menu">
+ <ul>
+     <li>复制</li>
+     <li>粘贴</li>
+     <li>剪切</li>
+ </ul>
+ </div>
+ </div>
+ </body>
+ <script type="text/javascript">
+ var Container = document.getElementById("container");
+ var menu = document.getElementById("menu");
+ Container.oncontextmenu = function(ev) {
+     var oEvent = ev || event;
+     var x = oEvent.clientX;//获取坐标，判断显示位置
+     var y = oEvent.clientY;
+     //自定义的菜单显示
+     menu.style.display = "block";
+     //让自定义菜单随鼠标的箭头位置移动
+     if (x>350) {
+         menu.style.left = oEvent.clientX - 50 + "px";
+     }
+     else {
+         menu.style.left = oEvent.clientX + "px";
+     };
+     if (y>280) {
+         menu.style.top = oEvent.clientY - 120 + "px";
+     }
+     else {
+         menu.style.top = oEvent.clientY + "px";
+     };
+     //return false阻止系统自带的菜单，
+     //return false必须写在最后，否则自定义的右键菜单也不会出现
+     return false;
+ };
+ //实现点击document，自定义菜单消失
+ document.onclick = function() {
+     menu.style.display = "none";
+ };
+ </script>
+</html>

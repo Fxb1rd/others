@@ -1,0 +1,35 @@
+/*清除原样式*/
+input[type="radio"] {
+    display: none;
+}
+input[type="checkbox"] {
+    display: none;
+}
+/*利用替换背景图的方式替换样式，发现当背景图是横排，
+文本较长时会在文本中显示背景，解决方法，将背景图换
+成竖排。我在这里构建了一个span元素，进行了背景层叠，
+解决这一问题*/
+span {
+	background-color: #fff;
+}
+.radio label {
+	background-image: url(ridio.png);
+	background-repeat: no-repeat;
+	font-size: 14px;
+	background-position: 0 0;
+	padding-left: 20px;
+}
+.checkbox label {
+	background-image: url(checkbox.png);
+	background-repeat: no-repeat;
+	font-size: 14px;
+	background-position: 0 0;
+	padding-left: 20px;
+}
+    /*伪类*/
+input[type="radio"]:checked + label {
+	background-position: -37px 0;
+}
+input[type="checkbox"]:checked + label {
+	background-position: -37px 0;
+}

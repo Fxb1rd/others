@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>正则表达式入门</title>
+</head>
+<body>
+    <label for="pn">号码检测</label>
+    <input type="text" name="pn" id="pn" onblur="Checkpn()">
+    <label for="pn">文本检测</label>
+    <input type="text" name="pn" id="word" onblur="Checksw()">
+    <span id="outPut"></span>
+<script type="text/javascript">
+function Checkpn() {//正则表达式匹配号码段，(\s|^)字段前面空白或者1开头，(?=\s|$)字段结尾或者后面为空白
+    var dx = new RegExp(/(\s|^)1(33|53|77|8[019])\d{8}(?=\s|$)/);
+    var lt = new RegExp(/(\s|^)1(3[012]|45|5[56]|76|8[56])\d{8}(?=\s|$)/);
+    var yd = new RegExp(/(\s|^)1(3[4-9]|47|5[012789]|78|8[23478])\d{8}(?=\s|$)/);
+    var pn = document.getElementById('pn').value;
+    var oP = document.getElementById('outPut');
+    if (dx.test(pn)) {//test属性控制匹配与结果输出
+        oP.innerHTML = pn + "是电信号码";
+    }
+    else if (lt.test(pn)) {
+        oP.innerHTML = pn + "是联通号码";
+    }
+    else if (yd.test(pn)) {
+        oP.innerHTML = pn + "是移动号码";
+    }
+    else {
+        oP.innerHTML = pn + "不是手机号码";
+    };
+};
+function Checksw() {
+    var rule = new RegExp(/(\s|^)([A-Za-z]+(-[A-Za-z]+)*)\s+\2(?=\s|$)/g);
+    var sw = document.getElementById('word').value;
+    var oP = document.getElementById('outPut');
+    var preoP = sw.match(rule);//match函数返回数组，/g模式会返回多项数组
+    //alert(preoP[0]);
+    if (preoP==null) {
+        oP.innerHTML = "不存在连续相同的两个单词";
+    }
+    else {
+        oP.innerHTML = preoP[0];
+    };
+};
+</script>
+</body>
+</html>

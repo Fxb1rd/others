@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>task2</title>
+    <style type="text/css">
+    * {padding: 0; margin: 0;}
+    .user {
+        width: 600px;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    .formitem {
+        width: 600px;
+        height: 60px;
+        float: left;
+    }
+    #user_id,#user_pw,#user_cpw,#user_em,#user_pn {
+        float: left;
+        margin-left: 20px;
+        height: 30px;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid #02DEF9;
+        outline: none;
+        font-size: 20px;
+    }
+    .user label {
+        width: 66px;
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        text-align: right;
+    }
+    .user input[type=button] {
+        float: left;
+        margin-left: 160px;
+        height: 30px;
+        width: 100px;
+        background-color: #02def9;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        outline: none;
+        color: #fff;
+    }
+    #prompt1,#prompt2,#prompt3,#prompt4,#prompt5 {
+        display: none;
+        float: left;
+        margin-top: 10px;
+        margin-left: -300px;
+        font-size: 16px;
+        color: #AEA7A7;
+    }
+    </style>
+</head>
+<body>
+    <form class="user">
+      <div class="formitem">
+        <label for="user_id">名称</label>
+        <input type="text" name="user_id" onfocus="Display1()" onblur="Confirm_id()" id="user_id"><br />
+        <span id="prompt1">必填，长度为4~16个字符</span>
+      </div>
+      <div class="formitem">
+        <label for="user_pw">密码</label>
+        <input type="password" name="user_pw" onfocus="Display2()" onblur="Confirm_pw()" id="user_pw"><br />
+        <span id="prompt2">必填，长度为4~16个字母或数字</span>
+      </div>
+      <div class="formitem">
+        <label for="user_cpw">密码确认</label>
+        <input type="password" name="user_cpw" onfocus="Display3()" onblur="Confirm_cpw()" id="user_cpw"><br />
+        <span id="prompt3">必填，再次输入密码</span>
+      </div>
+      <div class="formitem">
+        <label for="user_em">邮箱</label>
+        <input type="text" name="user_em" onfocus="Display4()" onblur="Confirm_em()" id="user_em"><br />
+        <span id="prompt4">必填，格式示例xxx@xxx.xxx</span>
+      </div>
+      <div class="formitem">
+        <label for="user_pn">手机</label>
+        <input type="text" name="user_pn" onfocus="Display5()" onblur="Confirm_pn()" id="user_pn"><br />
+        <span id="prompt5">必填，长度为4~16个字符</span>
+      </div>
+      <input type="button" value="提交" onclick="Checkall()">
+    </form>
+<script>
+//提示功能//////////////////////////////////////////////
+function Display1() {document.getElementById('prompt1').style.display = "block";};
+function Display2() {document.getElementById('prompt2').style.display = "block";};
+function Display3() {document.getElementById('prompt3').style.display = "block";};
+function Display4() {document.getElementById('prompt4').style.display = "block";};
+function Display5() {document.getElementById('prompt5').style.display = "block";};
+var checknum1 = 0;//判断参量
+var checknum2 = 0;
+var checknum3 = 0;
+var checknum4 = 0;
+var checknum5 = 0;
+//验证功能//////////////////////////////////////////////
+//验证名称///////////
+function Confirm_id() {
+    var user_id = document.getElementById('user_id').value;
+    var border_c = document.getElementById('user_id');
+    var prompt_w = document.getElementById('prompt1');
+    var len = user_id.length; //获取长度作为判断条件
+    if (len>=4&&len<=16) {
+        border_c.style.borderColor = "#00ff1a";//设置属性.style
+        prompt_w.innerHTML = "名称格式正确";
+        prompt_w.style.color = "#00ff1a";
+        checknum1=1;
+    }
+    else {
+        border_c.style.borderColor = "#ff0000";
+        prompt_w.style.color = "#ff0000";
+        if (len==0) {
+            prompt_w.innerHTML = "名称不能为空";
+        }
+        else {
+            prompt_w.innerHTML = "名称长度要在4~16字符";
+        };
+        checknum1=0;
+    };
+};
+//验证密码///////////
+function Confirm_pw() {
+    var user_pw = document.getElementById('user_pw').value;
+    var border_c = document.getElementById('user_pw');
+    var prompt_w = document.getElementById('prompt2');
+    var len = user_pw.length; //获取长度作为判断条件
+    var reg = new RegExp(/\w/);//匹配合法字符
+    if (reg.test(user_pw)) {
+        if (len>=4&&len<=16) {
+            border_c.style.borderColor = "#00ff1a";//设置属性.style
+            prompt_w.innerHTML = "密码格式正确";
+            prompt_w.style.color = "#00ff1a";
+            checknum2=1;
+        }
+        else {
+            border_c.style.borderColor = "#ff0000";
+            prompt_w.style.color = "#ff0000";
+            prompt_w.innerHTML = "密码长度要在4~16字符";
+            checknum2=0;
+        };
+    }
+    else {
+        border_c.style.borderColor = "#ff0000";
+        prompt_w.style.color = "#ff0000";
+        prompt_w.innerHTML = "请输入合法字符";
+        checknum2=0;
+    };
+};
+//验证密码////////////////
+function Confirm_cpw() {
+    var user_pw = document.getElementById('user_pw').value;
+    var user_cpw = document.getElementById('user_cpw').value;
+    var border_c = document.getElementById('user_cpw');
+    var prompt_w = document.getElementById('prompt3');
+    var len = user_pw.length; //获取长度作为判断条件
+    var reg = new RegExp(/\w/);//匹配合法字符
+    if (reg.test(user_pw)&&len>=4&&len<=16&&user_cpw==user_pw) {
+        border_c.style.borderColor = "#00ff1a";//设置属性.style
+        prompt_w.innerHTML = "密码正确";
+        prompt_w.style.color = "#00ff1a";
+        checknum3=1;
+    }
+    else {
+        border_c.style.borderColor = "#ff0000";
+        prompt_w.style.color = "#ff0000";
+        prompt_w.innerHTML = "密码错误";
+        checknum3=0;
+    };
+};
+//验证邮箱/////////
+function Confirm_em() {
+    var user_em = document.getElementById('user_em').value;
+    var border_c = document.getElementById('user_em');
+    var prompt_w = document.getElementById('prompt4');
+    var reg = new RegExp(/\w+@\w+\.\w+/);//匹配合法字符
+    if (reg.test(user_em)) {
+        border_c.style.borderColor = "#00ff1a";//设置属性.style
+        prompt_w.innerHTML = "邮箱格式正确";
+        prompt_w.style.color = "#00ff1a";
+        checknum4=1;
+    }
+    else {
+        border_c.style.borderColor = "#ff0000";
+        prompt_w.style.color = "#ff0000";
+        prompt_w.innerHTML = "邮箱格式错误";
+        checknum4=0;
+    };
+};
+//验证手机////////////
+function Confirm_pn() {
+    var user_pn = document.getElementById('user_pn').value;
+    var border_c = document.getElementById('user_pn');
+    var prompt_w = document.getElementById('prompt5');
+    var reg = new RegExp(/\d{11}/);//匹配合法字符
+    if (reg.test(user_pn)&&user_pn.length==11) {
+        border_c.style.borderColor = "#00ff1a";//设置属性.style
+        prompt_w.innerHTML = "手机格式正确";
+        prompt_w.style.color = "#00ff1a";
+        checknum5=1;
+    }
+    else {
+        border_c.style.borderColor = "#ff0000";
+        prompt_w.style.color = "#ff0000";
+        prompt_w.innerHTML = "手机格式错误";
+        checknum5=0;
+    };
+};
+//整体验证/////////////////////
+function Checkall() {
+    Display1();
+    Display2();
+    Display3();
+    Display4();
+    Display5();
+    Confirm_id();
+    Confirm_pw();
+    Confirm_cpw();
+    Confirm_em();
+    Confirm_pn();
+    function innerCheck() {
+        if (checknum1,checknum2,checknum3,checknum4,checknum5==1) {
+            alert("提交成功");
+        }
+        else {
+            alert("请正确填写");
+        };
+    };
+    innerCheck();
+};
+</script>
+</body>
+</html>

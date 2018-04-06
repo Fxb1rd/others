@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>折叠面板</title>
+    <style type="text/css" media="screen">
+    * {margin: 0; padding: 0;}
+    .container {
+        width: 300px;
+        border: 1px solid #000;
+        float: left;
+    }
+    .tabbody {
+        float: left;
+        overflow: hidden;
+        width: 300px;
+        height: 0;
+    }
+    input[type=button] {
+        float: left;
+        width: 300px;
+        height: 30px;
+        border: none;
+        background-color: #00AAFF;
+    }
+    .tabbtn1:focus + .tabbody {height: 70px;}
+    .tabbtn2:focus + .tabbody {height: 70px;}
+    .tabbtn3:focus + .tabbody {height: 70px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+       <input type="button" name="" value="tab1" class="tabbtn1">
+       <div class="tabbody">
+           <p>前端前端前端</p>
+       </div>
+       <input type="button" name="" value="tab2" class="tabbtn2">
+       <div class="tabbody">
+           <p>前端前端前端</p>
+       </div>
+       <input type="button" name="" value="tab3" class="tabbtn3">
+       <div class="tabbody">
+           <p>前端前端前端</p>
+       </div>
+    </div>
+</body>
+</html>

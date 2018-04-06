@@ -1,0 +1,22 @@
+h1
+{
+	color: blue;
+}
+h2
+{
+	font-size: 14px;
+}
+.art1
+{
+	font-size: 12px;
+	line-height: 1.5em;
+	color: yellow;
+	background-color: black;
+	text-indent: 2em;
+	font-weight: 900;
+
+}
+.pic1
+{
+	border: 2px solid red;
+}

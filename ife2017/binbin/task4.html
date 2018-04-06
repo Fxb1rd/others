@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task4</title>
+	<style>
+	    * {padding: 0; margin: 0;}
+        .page {
+        	min-height: 60px;
+        	max-width: 280px;
+        	float: left;
+        	margin-left: 200px;
+        	border-radius: 5px;
+        	background: linear-gradient(#00FFE8,#0588FF);/*渐变*/
+        	background: -webkit-linear-gradient(#00FFE8,#0588FF);
+        	background: -o-linear-gradient(#00FFE8,#0588FF);
+        	background: -moz-linear-gradient(#00FFE8,#0588FF);
+        	padding: 5px;
+        }
+        .function {
+        	height: 24px;
+        	width: 280px;
+        	float: left;
+        }
+        .function input[type=text] {
+        	width: 80px;
+        	height: 24px;
+        	float: left;
+        	outline: none;
+        	border: none;
+        	background-color: #0588FF;
+        }
+        .function input[type=button] {
+        	width: 40px;
+        	height: 24px;
+        	float: left;
+        	margin-left: 10px;
+        	background-color: #00AFFF;
+        	border: none;
+        	border-radius: 2px;
+        	outline: none;
+        }
+        .display {height: 50px;}
+        .f1 {
+        	height: 30px;
+        	width: 40px;
+        	color: #fff;
+        	font-size: 20px;
+        	line-height: 30px;
+        	text-align: center;
+        	background-color: #00DEFF;
+        	border-radius: 4px;
+            float: left;
+            margin-right: 6px;
+            margin-top: 5px;
+        }
+	</style>
+</head>
+<body>
+  <div class="page">
+	<div class="function">
+		<input type="text" id="insert">
+		<input type="button" id="plus-l" value="左加" onclick="plusl()">
+		<input type="button" id="plus-r" value="右加" onclick="plusr()">
+		<input type="button" id="remove-l" value="左删" onclick="dell()">
+		<input type="button" id="remove-r" value="右删" onclick="delr()">
+	</div>
+    <div class="display" id="display"></div>
+<script type="text/javascript">
+function plusl() {
+    var outDivNode = document.getElementById("display");
+	//var innerDivNodes = outDivNode.childNodes;//获取第一个元素
+	//var innerDivNode = innerDivNodes[0];
+	var fchild = outDivNode.firstChild;
+	var newDiv = document.createElement("div");
+	newDiv.setAttribute("class", "f1");
+	newDiv.setAttribute("onclick", "clickdel(this)");
+	outDivNode.insertBefore(newDiv,fchild/*innerDivNode*/);
+	var fchild = outDivNode.firstChild;
+	x = Math.ceil(Math.random()*100);//生成随机数
+	fchild.innerHTML= x;//输出随机数
+};
+function plusr() {
+	var outDivNode = document.getElementById("display");
+	var newDiv = document.createElement("div")
+	newDiv.setAttribute("class", "f1");
+	newDiv.setAttribute("onclick", "clickdel(this)");
+	document.getElementById("display").appendChild(newDiv);
+	var lchild = outDivNode.lastChild;
+	x = Math.ceil(Math.random()*100);
+	lchild.innerHTML = x;
+};
+function dell() {
+    var outDivNode = document.getElementById("display");
+	var fchild = outDivNode.firstChild;//获取第一个子元素
+	var y = fchild.innerHTML;
+    outDivNode.removeChild(fchild);//清除元素
+    alert("移除"+y+"?");
+};
+function delr() {
+    var outDivNode = document.getElementById("display");
+	var lchild = outDivNode.lastChild;//获取最后一个子元素
+    var y = lchild.innerHTML;
+    outDivNode.removeChild(lchild);
+    alert("移除"+y+"?");
+};
+function clickdel(divNode) {
+	var pNode = divNode.parentNode;
+	pNode.removeChild(divNode);
+};
+/*function randomnum() {
+	x = Math.ceil(Math.random()*100);
+}*///随机数
+</script>
+</body>
+</html>

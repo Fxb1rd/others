@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>task4</title>
+<style type="text/css">
+    * {margin: auto; padding: 0;}
+    .container {
+        width: 370px;
+        height:370px;
+        border: 2px solid #000;
+        position: relative;
+    }
+    .grid {border-collapse: collapse; float: left;}
+    .grid td {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #000;
+    }
+    #tank {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 165px;
+        left: 165px;
+        background-color: #FF0000;
+        transition:top 1s, left 1s, transform 1s;
+        -moz-transition:top 1s, left 1s, -moz-transform 1s; /* Firefox 4 */
+        -webkit-transition:top 0.5s, left 0.5s, -webkit-transform 0.5s; /* Safari and Chrome */
+        -o-transition:top 1s, left 1s, -o-transform 1s; /* Opera */
+    }
+    #tank_h {
+        width: 40px;
+        height: 10px;
+        background-color: #00F2FF;
+    }
+    .console {
+        width: 370px;
+        height: 50px;
+        border: 2px solid #000;
+        position: relative;
+    }
+    .console input[type=text] {
+        width: 100px;
+        height: 20px;
+        float: left;
+        margin-left: 66px;
+        margin-top: 15px;
+        outline: none;
+    }
+    .console input[type=button] {
+        width: 100px;
+        height: 24px;
+        float: left;
+        margin-left: 20px;
+        margin-top: 15px;
+        outline: none;
+    }
+    .consoletxt {
+        position: absolute;
+        top: 0;
+        left: 180px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+       <table class="grid">
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+       </table>
+       <div id="tank"><div id="tank_h"></div></div>
+    </div>
+    <div class="console">
+        <input type="text" id="order">
+        <input type="button" id="action" value="移动" onclick="orDer()">
+    </div>
+    <div class="consoletxt">
+    <h3>console:</h3>
+    go         <br />
+    movetop    <br />
+    moveright  <br />
+    movebottom <br />
+    moveleft   <br />
+    transtop   <br />
+    transright <br />
+    transbottom<br />
+    transleft  <br />
+    turnleft   <br />
+    turnright  <br />
+    turnback   <br />
+    指令不要带空格！
+    </div>
+<script>////优化转向和区域判断
+var i = 0;//方向判断码
+var box = document.getElementById('tank');
+var judgel = getStyle(box,"left");//位置判断码
+var judget = getStyle(box,"top");//位置判断码
+var dTime;//延时器
+function orDer() {//命令判断函数
+    var ins = document.getElementById('order').value;
+    clearTimeout(dTime);
+    dTime = setTimeout(function()  {
+        judgel = getStyle(box,"left");//动态条件
+        judget = getStyle(box,"top");
+        if (ins=="go") {Go();};
+        if (ins=="movetop") {MOV_t();};
+        if (ins=="moveright") {MOV_r();};
+        if (ins=="movebottom") {MOV_b();};
+        if (ins=="moveleft") {MOV_l();};
+        if (ins=="transtop") {TRAN_t();};
+        if (ins=="transright") {TRAN_r();};
+        if (ins=="transbottom") {TRAN_b();};
+        if (ins=="transleft") {TRAN_l();};
+        if (ins=="turnleft") {TUN_l();};
+        if (ins=="turnright") {TUN_r();};
+        if (ins=="turnback") {TUN_b();};
+    },500);
+};
+function Go() {//前进函数
+    if ((i%4) == 0&&judget!=="1px") {///向上移动一格
+        var x = getStyle(box,"top");
+        var y = x.match(/\d+/);
+        box.style.top = y - 41 + "px";
+    }
+    if ((i%4) == 1 && judgel!=="329px") {///向右移动一格
+        var x = getStyle(box,"left");
+        var y = x.match(/\d+/);
+        box.style.left = y - (-41) + "px";//采取减去负数的方法来实现加法，避免造成字符串相加
+    }
+    if ((i%4) == 2 && judget!=="329px") {///向下移动一格
+        var x = getStyle(box,"top");
+        var y = x.match(/\d+/);
+        box.style.top = y - (-41) + "px";
+    }
+    if ((i%4) == 3 && judgel!=="1px") {///向左移动一格
+        var x = getStyle(box,"left");
+        var y = x.match(/\d+/);
+        box.style.left = y - 41 + "px";
+    };
+};
+//转向函数
+function TUN_r() {
+    i++;
+    var r = 90*(i%4);
+    box.style['transform'] = 'rotate(' + r + 'deg)';
+};
+var fix_d = 0;//创建一个修正数字，如果使用i--，会导致出现i小于0，负数无法被go（）函数判断，而且又要达到右转效果，于是创建这个修正变量
+function TUN_l() {
+    i = i + 3;
+    fix_d++;
+    var r = 90*(i - 4*fix_d);
+    box.style['transform'] = 'rotate(' + r + 'deg)';
+};
+function TUN_b() {
+    i = i + 2;
+    var r = 90*(i%4);
+    box.style['transform'] = 'rotate(' + r + 'deg)';
+};
+//移动函数
+function MOV_t() {
+    if (judget!=="1px") {
+        var x = getStyle(box,"top");
+        var y = x.match(/\d+/);
+        box.style.top = y - 41 + "px";
+    };
+};
+function MOV_r() {
+    if (judgel!=="329px") {
+        var x = getStyle(box,"left");
+        var y = x.match(/\d+/);
+        box.style.left = y - (-41) + "px";
+    };
+};
+function MOV_b() {
+    if (judget!=="329px") {
+        var x = getStyle(box,"top");
+        var y = x.match(/\d+/);
+        box.style.top = y - (-41) + "px";
+    };
+};
+function MOV_l() {
+    if (judgel!=="1px") {
+        var x = getStyle(box,"left");
+        var y = x.match(/\d+/);
+        box.style.left = y - 41 + "px";
+    };
+};
+//转动函数
+function TRAN_t() {
+    i = 0;
+    box.style['transform'] = 'rotate(0deg)';
+    Go();
+};
+function TRAN_r() {
+    i = 1;
+    box.style['transform'] = 'rotate(90deg)';
+    Go();
+};
+function TRAN_b() {
+    i = 2;
+    box.style['transform'] = 'rotate(180deg)';
+    Go();
+};
+function TRAN_l() {
+    i = 3;
+    box.style['transform'] = 'rotate(-90deg)';
+    Go();
+};
+//核心
+function getStyle(element, attr) {//构造函数获取style值
+    if(element.currentStyle) {
+        return element.currentStyle[attr];
+    }
+    else {
+        return getComputedStyle(element, false)[attr];
+    };
+};
+</script>
+</body>
+</html>

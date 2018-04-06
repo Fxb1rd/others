@@ -1,0 +1,550 @@
+* {margin: 0; padding: 0; outline: none;}
+.page {width: 1280px; margin: auto;}
+/**********head**********/
+header {width: 1280px; height: 56px;}
+/*logo*/
+.logo1 {
+	width: 100px;
+	height: 31px;
+	float: left;
+	margin-left: 59px;
+	margin-top: 13px;
+}
+.logo1 img {width: 31px; height: 31px;}
+.word1 {
+	font-size: 19px;
+	float: right;
+	margin-top: 6px;
+}
+/*signbar*/
+.signup {
+	width: 52px;
+	height: 19px;
+	float: right;
+	margin-right: 59px;
+	margin-top: 20px;
+	position: relative;
+	overflow: hidden;
+}
+.manh {
+	width:8px;
+	height: 8px;
+	border: 1px solid red;
+	border-radius: 4px;
+	position: absolute;
+	top: 0;
+	left: 4px;
+}
+.manb {
+	width:16px;
+	height: 16px;
+	border: 1px solid red;
+	border-radius: 8px;
+	position: absolute;
+	bottom: -8px;
+	left: 0;
+}
+.word2 {float:right; color: red;}
+/*nav*/
+.navbar {
+	width: 470px;
+	height: 52px;
+	float: right;
+	margin-right: 40px;
+}
+.navbar li {
+	width: 64px;
+	height: 33px;
+	float: right;
+	margin-top: 19px;
+	margin-left: 30px;
+	text-align: center;
+}
+.navbar a {text-decoration: none; color: gray;}
+.navbar li:hover {color: red; border-bottom: 4px solid red;}
+.navbar a:hover {color: red;}
+/**********content1**********/
+.content1 {
+	width: 1280px;
+	height: 691px;
+	color: #fff;
+	background-image: url(img/bg1.png);
+	overflow: hidden;
+	position: relative;
+}
+.glass1 {
+	width: 1280px;
+	height: 691px;
+	background-color: rgba(0,0,0,0.20);
+    float: left;
+}
+.word3 {
+	font-size: 50px;
+	width: 420px;
+	height: 50px;
+	position: relative;
+	top: 230px;
+	left: 116px;
+}
+.word4 {
+    font-size: 19px;
+	width: 420px;
+	height: 54px;
+	position: relative;
+	top: 270px;
+	left: 116px;
+}
+.content1 input {
+	border-style: none;
+	font-size: 40px;
+	width: 300px;
+	color: #fff;
+	height: 70px;
+	background-color: #EC2B2B;
+	position: absolute;
+	top: 420px;
+	left: 116px;
+}
+/**********content2**********/
+.content2 {
+	width: 1280px;
+	height: 250px;
+	float: left;
+}
+.icon {
+	width: 320px;
+	height: 250px;
+	float: left;
+	position: relative;
+}
+.icon img {
+	position: absolute;
+	left: 143px;
+	top: 40px;
+}
+.word5,.word5-l,.word5-r {
+	width: 238px;
+	height: 50px;
+	position: absolute;
+	top: 100px;
+	padding-left: 80px;
+	border-right: 2px solid gray;
+	border-left: 2px solid gray;
+}
+.word5-l {border-left: 0px; width: 239px;}
+.word5-r {border-right: 0px; width: 239px;}
+/**********content3**********/
+.content3 {
+	height: 360px;
+	width: 1280px;
+	background-color: #E6E5E5;
+	float: left;
+	position: relative;
+}
+.content3 img {
+	position: absolute;
+	top: 100px;
+	left: 594px;
+}
+.word6 {
+	width: 880px;
+	height: 100px;
+	position: absolute;
+	top: 220px;
+	left: 200px;
+}
+.word6 span {font-size: 50px; color: gray;}
+/**********content4**********/
+.content4 {
+	width: 1280px;
+	height: 340px;
+	background-image: url(img/bg2.png);
+	float: left;
+	position: relative;
+}
+.glass2 {
+	width: 1280px;
+	height: 340px;
+	background-color: rgba(0,0,0,0.20);
+    float: left;
+}
+.word7 {
+	width: 600px;
+	height: 200px;
+	text-align: center;
+	font-size: 25px;
+	line-height: 30px;
+	color: #fff;
+	float: left;
+	margin-left: 340px;
+	margin-top: 50px;
+	position: relative;
+}
+.word7 hr {
+	width: 40px;
+	height: 4px;
+	border: none;
+	border-top: 4px solid #fff;
+	position: absolute;
+	top: 40px;
+	left: 285px;
+}
+.word7 small {font-size: 12px;}
+.city {
+	height: 40px;
+	width: 1280px;
+	position: absolute;
+	bottom: 100px;
+}
+.city input,select {
+	width: 190px;
+	height: 30px;
+	float: left;
+	margin: 0 60px;
+}
+.city select {
+	border: none;
+	       appearance:none;/**清除默认样式*/
+      -moz-appearance:none;
+   -webkit-appearance:none;
+   background: url("img/jt.png") no-repeat scroll right #fff;
+}
+.city input[type="submit"] {
+	background-color: red;
+	font-size: 15px;
+	color: #fff;
+	border: none;
+}
+.city select:hover {
+	border: 1px solid red;
+    width: 190px;
+}
+.city select:active {
+	border: 1px solid red;
+    width: 190px;
+}
+/**********待解决**********/
+/**********content5**********/
+.content5 {
+	width: 1280px;
+	height: 400px;
+	height: 605px;
+	float: left;
+}
+.picwall {
+	width: 1140px;
+	float: left;
+	margin-left: 80px;
+	margin-top: 100px;
+}
+.piccontainer {
+	width: 202px;
+	height: 320px;
+	padding: 8px;
+	margin: 0px 30px;
+	box-shadow: 1px 1px 1px gray;
+	float: left;
+	position: relative;
+}
+#piccontainer-D {margin: 60px 30px 0;}
+.word8 {
+	width: 202px;
+	height: 60px;
+	font-size: 15px;
+	text-align: center;
+	padding: 10px;
+	position: absolute;
+	bottom: -80px;
+}
+.word8-D {
+	position: absolute;
+	top: -60px;
+}
+.word8 h3 {
+	letter-spacing: 10px;
+}
+/********content6**********/
+.content6 {
+	width: 1280px;
+	height: 565px;
+	background-image: url(img/bg3.png);
+	background-repeat: no-repeat;
+	float: left;
+	position: relative;
+}
+.bigtitle {
+	width: 350px;
+	height: 365px;
+	text-align: center;
+	font-size: 36px;
+	color: #fff;
+	position: absolute;
+	top: 100px;
+	left: 250px;
+}
+.bigtitle em {
+	font-style: normal;
+	font-size: 108px;
+	line-height: 0.9em;
+}
+.bigtitle small {font-size: 20px;}
+.jt1{
+	width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 20px solid #fff;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    left: 830px;
+    top: 273px;
+}
+/*********************换页效果****************************/
+.word9 {
+	width: 430px;
+	height: 565px;
+	float: right;
+	position: relative;
+}
+.essaycontainer {
+	width: 330px;
+	height: 400px;
+	margin: 50px auto auto 50px;
+	position: relative;
+	top: 100px;
+	overflow: hidden;
+}
+.essay1 {
+	width: 330px;
+	height: 250px;
+	background-color: #fff;
+	position: absolute;
+	top: 100px;
+	left: 50px;
+}
+#tab1 {z-index: 1;}
+#tab2 {z-index: -1;}
+#tab3 {z-index: -2;}
+#tab1:target, #tab2:target, #tab3:target {z-index: 1;}
+.tabmenu {
+	position:absolute;
+	top:350px;
+	left: 130px;
+}
+.tabmenu li{display:inline-block;}
+.tabmenu li a {
+	display:block;
+	padding:5px 10px;
+	margin:0 10px 0 0;
+	text-decoration:none;
+}
+.button1 {
+	width: 0px;
+	height: 0px;
+	border: 8px solid gray;
+	border-radius: 8px;
+}
+.essay1 h2 {text-align: center; line-height: 50px;}
+.essay1 h2 span {font-size: 20px; color: red;}
+.moreinfo1 {
+	width: 120px;
+	height: 40px;
+	background-color: #fff;
+	color: red;
+	border: 1px solid red;
+	border-radius: 3px;
+	position: absolute;
+	top: 350px;
+	left: 150px;
+}
+.word10 {font-size: 12px; line-height: 24px;}
+/**********content7**********/
+.content7 {
+	height: 520px;
+	width: 1280px;
+	float: left;
+	position: relative;
+}
+.C7-left {
+	width: 425px;
+	height: 520px;
+	background-color: red;
+	float: left;
+	position: relative;
+}
+.C7-center {
+	width: 425px;
+	height: 520px;
+	float: left;
+	position: relative;
+}
+.C7-right {
+	width: 430px;
+	height: 520px;
+	background-image: url(img/bg4.png);
+	float: left;
+	position: relative;
+}
+.jt2{
+	width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid #fff;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    left: 0px;
+    top: 260px;
+}
+.word11 {
+    width: 230px;
+    height: 140px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 36px;
+    position: absolute;
+    top: 150px;
+    left: 100px;
+}
+.word11 hr {
+	width: 40px;
+	height: 4px;
+	border: none;
+	border-top: 4px solid #fff;
+	position: absolute;
+	top: 100px;
+	left: 90px;
+}
+.C7-left .word11 {color: #fff;}
+.moreinfo2 {
+    width: 120px;
+	height: 40px;
+	background-color: red;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	position: absolute;
+	top: 350px;
+	left: 150px;
+}
+.C7-center hr {border-color: #000;}
+/***********content8***********/
+.content8 {
+	height: 750px;
+	width: 1280px;
+	float: left;
+}
+.word12 {
+	width: 1280px;
+	height: 170px;
+	float: left;
+	margin-top: 80px;
+	text-align: center;
+	position: relative;
+}
+.word12 hr {
+	width: 40px;
+	height: 4px;
+	border: none;
+	border-top: 4px solid red;
+	position: absolute;
+	top: 50px;
+	left: 615px;
+}
+.word12 span {font-size: 12px;}
+.word13 {
+	width: 400px;
+	height: 500px;
+	float: left;
+	margin-left: 140px;
+}
+.word13 p {
+	font-size: 12px;
+	line-height: 2;
+}
+.word13 span {
+	display: block;/***否则无法右对齐***/
+	text-align: right;
+	font-size: 10px;
+}
+.regsiter {
+	width: 600px;
+	height: 500px;
+	float: right;
+	margin-right: 140px;
+}
+.regsiter input[type="text"] {
+	width: 250px;
+	height: 20px;
+	background-color: #E2E2E2;
+	border: none;
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 20px;
+}
+.regsiter textarea {
+	background-color: #E2E2E2;
+	border: none;
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 30px;
+}
+.regsiter input[type="submit"] {
+	width: 530px;
+	height: 30px;
+	background-color: #E2E2E2;
+	border: none;
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 30px;
+}
+/*********footer***********/
+footer {
+	height: 480px;
+	width: 1280px;
+	float: left;
+	background-color: #211B1B;
+	position: relative;
+}
+footer section {
+	width: 1280px;
+	height: 360px;
+	color: #fff;
+	float: left;
+}
+footer .word12 {height: 100px;}
+footer form {text-align: center;}
+footer form input[type="text"] {
+	width: 360px;
+	height: 25px;
+	border: none;
+}
+footer form input[type="submit"] {
+	width: 40px;
+	height: 25px;
+	background-color: #453636;
+	color: #fff;
+	border: none;
+}
+.iconlink {text-align: center; padding: 10px;}
+.iconlink img {margin: 5px;}
+.foot {
+	width: 1280px;
+	height: 60px;
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+}
+.foot span {
+	font-size: 12px;
+	color: #fff;
+	float: left;
+	margin-top: 36px;
+	margin-left: 50px;
+}
+.foot a span {
+	font-size: 500px
+	color: #fff;
+	text-decoration: none;
+	float: right;
+	margin-top: 36px;
+	margin-right: 50px;
+}

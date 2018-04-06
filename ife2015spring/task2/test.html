@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>test</title>
+</head>
+<body>
+   <input id="number1" type="text">
+   <input id="number2" type="text">
+   <span id="result"></span>
+   <button id="addbtn"></button>
+<script>
+/*function $(id) {
+    return document.getElementById(id);
+}//将各种方法封装，复用
+
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+function renderResult(result) {
+    $("result").innerHTML = result;
+}
+
+function addEventHandle() {
+    var num1 = $("number1").value;
+    var num2 = $("number2").value;
+    var result = add(num1, num2);
+    renderResult(result);
+}
+
+function initEvent() {
+    $("addbtn").addEventListener("click", addEventHandle, false);
+}
+initEvent();*/
+var btn = document.getElementById('addbtn');
+btn.onclick = function() {add()};
+function add() {
+    var num1 = document.getElementById('number1').value;
+    var num2 = document.getElementById('number2').value;
+    var result = document.getElementById('result');
+    result.innerHTML = num1 +num2;
+}
+</script>
+</body>
+</html>

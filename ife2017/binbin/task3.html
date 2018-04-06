@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task3</title>
+</head>
+<body>
+	<ul id="source">
+    <li>北京空气质量：<b>90</b></li>
+    <li>上海空气质量：<b>70</b></li>
+    <li>天津空气质量：<b>80</b></li>
+    <li>广州空气质量：<b>50</b></li>
+    <li>深圳空气质量：<b>40</b></li>
+    <li>福州空气质量：<b>32</b></li>
+    <li>成都空气质量：<b>90</b></li>
+  </ul>
+  <ul id="resort"></ul>
+  <button id="sort-btn" onclick="newlist()">排序</button>
+<script type="text/javascript">
+var list = "";
+var list1 = document.getElementsByTagName("li");//获取li节点。
+var list2 = document.getElementsByTagName("b");//获取b节点。
+var arr  = new Array(list1.length);//创建一个数组arr，长度为li节点的长度，即li的个数。
+for(var i=0; i<list1.length; i++) {//遍历li,b节点。
+	arr[i]=new Array(2)//设置arr数组中的元素为数组，即二维数组。长度为2，一个名字。一个值。
+	//在for循环中创建，正好存储与li节点中的所有信息。	
+	var value1 = list1[i].innerHTML;//取出li节点中的内容。（具体在我给你的DHTML文档中。）
+	var ss = value1.split("：");//按","对value进行切割。返回一个字符串数组。
+    //ss[0]表示","左边的值。
+	arr[i][0]= ss[0];
+	var value2 = list2[i].innerHTML;//取出b节点中的内容。（具体在我给你的DHTML文档中。）
+	arr[i][1] = value2;
+};
+    arr.sort(function mas(a,b) {
+	    return b[1]- a[1]
+});//排序
+var chinese = new Array('一','二','三','四','五','六','七','八','九','十');//十以内简单中文序号
+for (var i=0;i<arr.length;i++)	{
+	list += "<li>"+"第"+chinese[i]+"名"+"："+arr[i][0]+"："+"<b>"+arr[i][1]+"</b>"+"</li>";
+};//遍历数组
+function newlist() {
+	document.getElementById('resort').innerHTML= list;
+};
+</script>
+</body>
+</html>

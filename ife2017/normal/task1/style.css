@@ -1,0 +1,44 @@
+input[type=radio],
+input[type=checkbox] {display: none;}
+label {
+    position: relative;
+    padding-left: 20px;
+    margin-right: 5px;
+    font-size: 15px;
+}
+label:before {
+    content: "";/*没有content属性不会显示未选定的灰色框*/
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 0;
+    border: 1px solid #aaa;
+      filter: alpha(opacity=0.25);  
+-moz-opacity: 0.25;  
+     opacity: 0.25;
+}
+ .radio label:before {border-radius: 8.5px;}
+.checkbox label:before {border-radius: 1px;}
+input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #EB1515;
+    font-size: 15px;
+    /*行高和对齐属性让选项中的圆点居中*/
+    text-align: center;
+    line-height: 15px;
+    border: 1px solid #EB1515;
+    filter: alpha(opacity=1);  
+-moz-opacity: 1;  
+     opacity: 1;
+}
+input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    color: #EB1515;
+    font-size: 15px;
+    text-align: center;
+    line-height: 15px;
+    border: 1px solid #EB1515;
+    filter: alpha(opacity=1);  
+-moz-opacity: 1;  
+     opacity: 1;
+}

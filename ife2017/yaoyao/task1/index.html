@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>task1</title>
+    <style type="text/css">
+    * {padding: 0; margin: 0;}
+    .user {
+        width: 600px;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    #user_id {
+        float: left;
+        margin-left: 20px;
+        height: 30px;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid #02DEF9;
+        outline: none;
+        font-size: 20px;
+    }
+    .user label {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+    }
+    .user input[type=button] {
+        float: left;
+        margin-left: 20px;
+        height: 30px;
+        width: 50px;
+        background-color: #02def9;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        outline: none;
+        color: #fff;
+    }
+    #prompt {
+        float: left;
+        margin-top: 10px;
+        margin-left: -370px;
+        font-size: 16px;
+        color: #DBDBDB;
+    }
+    </style>
+</head>
+<body>
+    <div class="user">
+        <label for="user_id">名称</label>
+        <input type="text" name="user_id" id="user_id">
+        <input type="button" name="" value="验证" onclick="Confirm()"><br />
+        <span id="prompt">必填，长度为4~16个字符</span>
+    </div>
+<script>
+function Confirm() {
+    var user_id = document.getElementById('user_id').value;
+    var border_c = document.getElementById('user_id');
+    var prompt_w = document.getElementById('prompt');
+    var len = user_id.length; //获取长度作为判断条件
+    //console.log(len);
+    if (len>=4&&len<=16) {
+        border_c.style.borderColor = "#00ff1a";//设置属性.style
+        prompt_w.innerHTML = "名称格式正确";
+        prompt_w.style.color = "#00ff1a";
+    }
+    else {
+        border_c.style.borderColor = "#FF0000";
+        prompt_w.style.color = "#ff0000";
+        if (len==0) {
+            prompt_w.innerHTML = "名称不能为空";
+        }
+        else {
+            prompt_w.innerHTML = "名称长度要在4~16字符";
+        };
+    };
+};
+</script>
+</body>
+</html>
